@@ -3,10 +3,13 @@ import time
 #------------------------------- Funciones ----------------------------------
 
 def limpiarPantalla():
-    print('\n' * 20)
+    print('\n' * 30)
 
 def palabraEscogida():
-    palabra = random.choice(['redes', 'ordenador', 'persona', 'juego', 'programa', 'computacion', 'python', 'puertos', 'pantalla', 'variables', 'inteligencia', ])
+    palabra = random.choice(['redes', 'ordenador', 'usuario', 'juego', 'programa',\
+     'computacion', 'python', 'puertos', 'pantalla', 'variables', 'archivos','linux',\
+     'software', 'git', 'macos', 'windows','microsoft', 'hash', 'internet', 'google', 'java', 'informacion',\
+    'android', 'apple', 'tecnologia', 'hardware', 'actualizaciones' ])
     return palabra
 
 def adivino(palabra, letrasIntentadas):
@@ -33,7 +36,8 @@ def textoOculto(palabra, letrasIntentadas):
             resultado += "_ "
     return resultado
 
-def leerIntento(letrasIntentadas):
+
+def leerIntento(letrasIntentadas): #Revisa si la respuesta del jugador es una letra, y que no sea repetida
     print()
     letra = input('Escriba una letra: ').lower()
     while len(letra) != 1 or letra not in 'abcdefghijklmnñopqrstuvwxyz' or letra in letrasIntentadas:
