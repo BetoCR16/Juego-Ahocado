@@ -22,7 +22,7 @@ def adivino(palabra, letrasIntentadas):
 def mostrarTablero(palabra, letrasIntentadas, intentos, turno, letraIncorrecta):
     print('Turno: ', turno)
     print('Letras incorrectas: ', letraIncorrecta)
-    print('Intentos restantes: ', INTENTOS_MAX-intentos)
+    print('Intentos restantes: ', INTENTOS_MAXIMOS-intentos)
     print()
     print(textoOculto(palabra, letrasIntentadas))
     print()
@@ -57,7 +57,7 @@ def otraVez():
 
 #----------------------- Principal -----------------------------------
 
-INTENTOS_MAX = 7
+INTENTOS_MAXIMOS = 7
 
 print('Bienvenido(a) al juego del Ahorcado')
 continuar = True
@@ -68,7 +68,7 @@ while continuar:
     letrasIntentadas = ""
     intentos = 0
     turno = 1
-    while intentos < INTENTOS_MAX and not adivino(palabra, letrasIntentadas):
+    while intentos < INTENTOS_MAXIMOS and not adivino(palabra, letrasIntentadas):
         mostrarTablero(palabra, letrasIntentadas, intentos, turno, letraIncorrecta)
         letra = leerIntento(letrasIntentadas)
         if aciertaIntento(palabra, letra):
