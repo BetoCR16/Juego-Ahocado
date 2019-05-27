@@ -16,10 +16,10 @@ def adivino(palabra, letrasIntentadas):
                 return False
     return True
 
-def mostrarTablero(palabra, letrasIntentadas, intentos, turno):
+def mostrarTablero(palabra, letrasIntentadas, intentos, turno, letraIncorrecta):
     print('Turno: ', turno)
-    print('Letras utilizadas: ', letrasIntentadas)
-    print('Intentos: ', intentos)
+    print('Letras incorrectas: ', letraIncorrecta)
+    print('Intentos restantes: ', INTENTOS_MAX-intentos)
     print()
     print(textoOculto(palabra, letrasIntentadas))
     print()
@@ -47,7 +47,7 @@ def aciertaIntento(palabra, letra):
 
 def otraVez():
     print()
-    respuesta = input('Desea volver a jugar? (s/n): ').lower()
+    respuesta = input('¿Desea volver a jugar? (s/n): ').lower()
     return respuesta == 's'
    
 
@@ -60,24 +60,26 @@ continuar = True
 
 while continuar:
     palabra = palabraEscogida()
+    letraIncorrecta = ''
     letrasIntentadas = ""
     intentos = 0
     turno = 1
     while intentos < INTENTOS_MAX and not adivino(palabra, letrasIntentadas):
-        mostrarTablero(palabra, letrasIntentadas, intentos, turno)
+        mostrarTablero(palabra, letrasIntentadas, intentos, turno, letraIncorrecta)
         letra = leerIntento(letrasIntentadas)
         if aciertaIntento(palabra, letra):
             print('Has adivinado :D')
         else:
             print('Has fallado :(')
+            letraIncorrecta = letraIncorrecta + letra + ' '
             intentos = intentos + 1
-        letrasIntentadas = letrasIntentadas + letra
+        letrasIntentadas = letrasIntentadas + letra + ' '
         turno = turno + 1
         time.sleep(1)
         limpiarPantalla()
     if adivino(palabra, letrasIntentadas):
-        print('Felicidades! Adivinaste la palabra: ', palabra)
+        print('¡Felicidades! Adivinaste la palabra: ', palabra)
     else:
         print('Has perdido :(. La palabra era: ', palabra)
     continuar = otraVez()
-print('Muchas gracias por jugar :D')
+print('\nMuchas gracias por jugar :D\n¡Tenga un lindo día!')
